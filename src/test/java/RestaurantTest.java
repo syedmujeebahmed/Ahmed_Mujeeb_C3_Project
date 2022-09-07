@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTest {
@@ -53,5 +56,23 @@ class RestaurantTest {
         assertThrows(itemNotFoundException.class, ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>ORDER VALUE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void calculate_the_total_order_value_of_an_order_and_verify_its_added_correctly() {
+        //adding a few more items to the menu before main test
+        restaurant.addToMenu("Cheese Pizza", 275);
+        restaurant.addToMenu("Veg Pizza", 150);
+
+        List<String> orderItems = Arrays.asList("Sweet corn soup","Cheese Pizza","Veg Pizza");
+        //TDD approach - The method needs to be implemented
+        int totalPrice = restaurant.totalOrderValue(orderItems);
+        int expectTotalPrice = 119 + 275 + 150;
+
+        assertEquals(expectTotalPrice, totalPrice);
+    }
+
+    //<<<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 }
