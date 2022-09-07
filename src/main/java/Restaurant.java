@@ -48,6 +48,7 @@ public class Restaurant {
 
         menu.remove(itemToBeRemoved);
     }
+
     public void displayDetails(){
         System.out.println("Restaurant:"+ name + "\n"
                 +"Location:"+ location + "\n"
@@ -69,4 +70,11 @@ public class Restaurant {
         return Objects.equals(name, that.name) && Objects.equals(location, that.location) && Objects.equals(openingTime, that.openingTime) && Objects.equals(closingTime, that.closingTime) && Objects.equals(menu, that.menu);
     }
 
+    public int totalOrderValue(List<String> orderItems) {
+        int totalPrice = 0;
+        for (String eachItem : orderItems) {
+            totalPrice += findItemByName(eachItem).getPrice();
+        }
+        return totalPrice;
+    }
 }

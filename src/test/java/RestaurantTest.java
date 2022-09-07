@@ -19,6 +19,7 @@ class RestaurantTest {
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
     }
+
     //>>>>>>>>>>>>>>>>>>>>>>>>>OPEN/CLOSED<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE
     @Test
@@ -55,6 +56,7 @@ class RestaurantTest {
     public void removing_item_that_does_not_exist_should_throw_exception() {
         assertThrows(itemNotFoundException.class, ()->restaurant.removeFromMenu("French fries"));
     }
+
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
@@ -68,8 +70,8 @@ class RestaurantTest {
         List<String> orderItems = Arrays.asList("Sweet corn soup","Cheese Pizza","Veg Pizza");
         //TDD approach - The method needs to be implemented
         int totalPrice = restaurant.totalOrderValue(orderItems);
-        int expectTotalPrice = 119 + 275 + 150;
-
+        //119 + 275 + 150 = 544
+        int expectTotalPrice = 544;
         assertEquals(expectTotalPrice, totalPrice);
     }
 
